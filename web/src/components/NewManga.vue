@@ -7,69 +7,25 @@ v-card
     .container
         v-row 
             v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance ")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance ")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance ")
-            v-col(cols="2")
-                a(href="#")
-                    MangaIcon(name="Kowloon Generic Romance ")
+                v-dialog(v-model="dialog" max-width="80%")
+                    template(v-slot:activator="{props}")
+                        a(v-bind="props" ).new-manga
+                            MangaIcon(name="Kowloon Generic Romance")
+                    v-card 
+                        MangaDetail
 </template>
 
 <script>
 import { defineComponent, getCurrentInstance, ref, onMounted, computed } from 'vue'
 import axios from 'axios'
 import MangaIcon from "./MangaIcon.vue";
+import MangaDetail from "./MangaDetail.vue";
+import { mergeProps } from 'vue'
 
 const Manga = defineComponent({
     components: {
         MangaIcon,
+        MangaDetail,
     },
     setup(){
         const mangaList = ref([])
@@ -89,10 +45,21 @@ const Manga = defineComponent({
             console.log(1123)
             getManga()
         })
+    },
+    data: () => ({
+        toggle_none: null,
+        toggle_one: 0,
+        toggle_exclusive: 2,
+        toggle_multiple: [0, 1, 2],
+        dialog: false,
+    }),
+    methods: {
+        mergeProps,
     }
 })
 
 export default Manga
+
 </script>
 
 
@@ -103,5 +70,9 @@ export default Manga
     h4{
         padding-left: 0.66rem;
     }
+}
+.new-manga:hover{
+    cursor: pointer;
+
 }
 </style>

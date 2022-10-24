@@ -2,12 +2,19 @@
 v-app
   HeadBar
   NavBar
-  v-main
-    v-container(fluid)
-      NewManga
-  NavDrawer
-    //- MangaDetail
-  Footer
+  //- v-main
+  //-   v-container(fluid)
+  //-     NewManga
+  //- NavDrawer
+
+  v-main 
+    AdminTitle
+
+  //- v-main 
+  //-   ReadManga
+
+
+
 </template>
 
 <script>
@@ -20,6 +27,9 @@ import NewManga from './components/NewManga.vue'
 import Footer from './components/Footer.vue'
 import BottomNav from './components/BottomNav.vue'
 import MangaDetail from './components/MangaDetail.vue'
+import AdminTitle from './components/AdminTitle.vue'
+import AddManga from './components/AddManga.vue'
+import ReadManga from './components/ReadManga.vue'
 
 export default {
   name: 'app',
@@ -32,7 +42,10 @@ export default {
     NewManga,
     Footer,
     BottomNav,
-    MangaDetail
+    MangaDetail,
+    AdminTitle,
+    AddManga,
+    ReadManga
 }
 }
 </script>
